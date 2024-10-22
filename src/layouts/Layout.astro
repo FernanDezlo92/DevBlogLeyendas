@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import NavBar from '../components/NavBar.astro';
 
 interface Props {
 	title: string;
@@ -18,35 +19,44 @@ const { title } = Astro.props;
 		<ClientRouter />
 	</head>
 	<body>
+		<NavBar />
 		<div>
 			<slot />
 		</div>
 	</body>
 </html>
+
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		color: #fff;
-	}
+    :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+            45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%
+        );
+    }
 
-	body {
-		@apply grid place-content-center p-20;
-	}
+    html {
+        font-family: system-ui, sans-serif;
+        background: #fff; 
+        color: #13151a;  
+    }
 
-	body > div {
-		@apply container;
-	}
+    body {
+        @apply grid place-content-center p-10;
+    }
+
+    body > div {
+        @apply container;
+    }
+
+    /* Estilos cuando el tema es oscuro */
+    html.dark {
+        background: #13151a;
+        color: #fff; 
+    }
+
 </style>
