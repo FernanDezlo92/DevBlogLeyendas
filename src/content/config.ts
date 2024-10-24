@@ -17,4 +17,20 @@ const books = defineCollection({
     }),
 });
 
-export const collection = { books };
+
+const article = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        author: z.string(),
+        img: z.string(),
+        date: z.date(),
+        description: z.string(),
+        tags: z.array(z.string()), 
+        content: z.string(), 
+        summary: z.string().optional(),  
+        category: z.string().optional(),   
+    }),
+});
+
+
+export const collection = { books, article };
