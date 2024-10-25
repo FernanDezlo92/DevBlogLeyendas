@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const articles = await getCollection("articles");
 ---
 
 <Layout title="Las leyendas de nuestros pueblos BLOG">
   <main class="flex flex-col md:flex-row items-center justify-around">
-    <img src="/portada4.jpg" alt="Imagen descriptiva" class="w-full md:w-60 md:h-80 mb-4 md:mb-0 md:mr-4" />
+    <img src="/fotosLibros/portada1.jpg" alt="Imagen descriptiva" class="w-full md:w-60 md:h-80 mb-4 md:mb-0 md:mr-4" />
     <div class="w-full md:w-1/2">
       <h1 class="mb-2 text-3xl font-bold leading-tight">Bienvenidos a <span class="text-gradient">Astro</span></h1>
 	  <p class="mb-8 text-lg bg-orange-300 dark:bg-background-light">
@@ -15,30 +18,26 @@ import Layout from '../layouts/Layout.astro';
   </main>
   <div class="flex flex-col items-center justify-center md:mt-60 mt-20">
     <div class="grid grid-cols-2 gap-10 md:gap-8 justify-between">
-      <a href="" class="flex flex-col items-center justify-center">
-        <img src="/portada1.jpg" alt="Imagen descriptiva" class="w-full md:w-60 md:h-80 mb-4 md:mb-0 md:mr-4" />
-        <h2 class="mb-2 text-2xl font-bold leading-tight">Mi primer blog</h2>
-        <p class="mb-4 text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit magnam sit suscipit eum culpa ipsam hic, nulla et ad? Ea earum maxime quibusdam eligendi inventore alias, saepe ex vel neque!</p>
-        <span class="text-xs">⏳ Lectura en 10 minutos</span>
-      </a>
-      <a href="" class="flex flex-col items-center justify-center">
-        <img src="/portada2.jpg" alt="Imagen descriptiva" class="w-full md:w-60 md:h-80 mb-4 md:mb-0 md:mr-4" />
-        <h2 class="mb-2 text-2xl font-bold leading-tight">Mi segundo blog</h2>
-        <p class="mb-4 text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit magnam sit suscipit eum culpa ipsam hic, nulla et ad? Ea earum maxime quibusdam eligendi inventore alias, saepe ex vel neque!</p>
-        <span class="text-xs">⏳ Lectura en 10 minutos</span>
-      </a>
-      <a href="" class="flex flex-col items-center justify-center">
-        <img src="" alt="Imagen descriptiva" class="w-full md:w-60 md:h-80 mb-4 md:mb-0 md:mr-4" />
-        <h2 class="mb-2 text-2xl font-bold leading-tight">Mi tercer blog</h2>
-        <p class="mb-4 text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit magnam sit suscipit eum culpa ipsam hic, nulla et ad? Ea earum maxime quibusdam eligendi inventore alias, saepe ex vel neque!</p>
-        <span class="text-xs">⏳ Lectura en 10 minutos</span>
-      </a>
-      <a href="" class="flex flex-col items-center justify-center">
-        <img src="" alt="Imagen descriptiva" class="w-full md:w-60 md:h-80 mb-4 md:mb-0 md:mr-4" />
-        <h2 class="mb-2 text-2xl font-bold leading-tight">Mi cuarto blog</h2>
-        <p class="mb-4 text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit magnam sit suscipit eum culpa ipsam hic, nulla et ad? Ea earum maxime quibusdam eligendi inventore alias, saepe ex vel neque!</p>
-        <span class="text-xs">⏳ Lectura en 10 minutos</span>
-      </a>
+      {
+        articles.map((article) => {
+          const { slug, data } = article
+          const { title, author, img, readtime, description } = data
+
+          return (
+            <a href={`/articulo/${slug}`} class="flex flex-col items-center justify-center">
+              <img
+                transition:name={`img-${slug}`}
+                class="w-full md:w-60 md:h-80 mb-4 md:mb-0 md:mr-4"
+                src={`/fotosLibros/${img}`}  
+                alt={title}
+              />
+              <h2 class="mb-2 text-2xl font-bold leading-tight">{title}</h2>
+              <p class="mb-4 text-gray-300">{description}</p>
+              <span class="text-xs">⏳ Lectura en {readtime} minutos</span>
+            </a>
+          )
+        }) 
+      }
     </div>
   </div>
 </Layout>

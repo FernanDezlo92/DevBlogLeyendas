@@ -1,7 +1,7 @@
 ---
 import NavLink from './NavLink.astro';
-
 import ThemeToggle from './ThemeToggle.astro';
+import { Icon } from 'astro-icon/components'
 
 const navLinks = [
     {
@@ -22,8 +22,6 @@ const navLinks = [
     }
 ]
 ---
-
-
 
 <nav class="min-h-10 pt-4 pb-12 relative sm:min-h-14 sm:pb-24 md:pt-8">
     {
@@ -48,6 +46,23 @@ const navLinks = [
                             </NavLink>
                         </li>
                     ))}
+                    <div class="flex gap-4 items-center justify-center">
+                        <li class="py-1">
+                            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <Icon name="youtube" class="w-6 h-6" />
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <Icon name="facebook" class="w-6 h-6" />
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                                <Icon name="twitter" class="w-6 h-6" />
+                            </a>
+                        </li>
+                    </div>
                 </ul>
             </div>
         )

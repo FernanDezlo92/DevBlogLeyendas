@@ -5,9 +5,9 @@ import { SHOW_BUY_BUTTON } from "astro:env/server";
 import AmazonLogo from "../../components/AmazonLogo.astro";
 
 export async function getStaticPaths() {
-  const books = await getCollection("books");
+  const articles = await getCollection("articles");
 
-  return books.map(book => ({
+  return articles.map(book => ({
     params: { id: book.slug },
     props: { book }
   }))
@@ -22,25 +22,11 @@ const { Content } = await render(book)
 
 ---
 
-<Layout title={`${title} - Dev Books`}>
+<Layout title={`${title} - Dev article`}>
   <div class="flex gap-12">
     <aside class="flex flex-col items-center gap-4">
-      <a href='/books' class="hover:underline opacity-70">← Volver atrás</a>
+      <a href='/' class="hover:underline opacity-70">← Volver atrás</a>
       <img transition:name={`img-${slug}`} class="rounded w-72 h-auto" src={`/fotosLibros/${img}`} alt={title} />
-      {
-        SHOW_BUY_BUTTON && (
-          <a
-            href={buy.spain}
-            title="Comprar libro"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-balance inline-flex gap-2 items-center bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 text-black font-bold py-2 px-4 rounded-lg border border-yellow-500 transition duration-200 ease-in-out hover:scale-105 hover:cursor-pointer justify-center text-center"
-          >
-            Comprar en Amazon España
-            <AmazonLogo />
-          </a>
-        )
-      }
     </aside>
 
     <main class="max-w-3xl">

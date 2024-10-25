@@ -7,7 +7,7 @@ const books = await getCollection("books");
 
 <Layout title="Books">
     <main>
-        <section aria-label="Libros recomendados para programadores">
+        <section aria-label="Libros recomendados para lectores de historia">
             <div class="px-4 mx-auto max-w-screen-xl">
                 <div class="grid gap-8 md:gap-40 md:grid-cols-2">
                     {
@@ -21,7 +21,7 @@ const books = await getCollection("books");
                                         <img
                                             transition:name={`img-${slug}`}
                                             class="mr-5 w-48 rounded"
-                                            src={`/${img}`}
+                                            src={`/fotosLibros/${img}`}
                                             alt={title}
                                         />
                                     </a>
