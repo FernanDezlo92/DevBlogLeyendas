@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout title="articles">
+    <section class="mt-10 text-center">
+        <h2 class="text-2xl font-bold mb-4">Suscríbete a mi boletín</h2>
+        <p class="mb-4">Recibe actualizaciones sobre mis libros, artículos y próximos proyectos.</p>
+        <form action="#" method="POST" class="w-full md:w-1/2 mx-auto">
+          <input type="email" name="email" placeholder="Tu correo electrónico" class="p-2 mb-4 w-full rounded border border-gray-300" />
+          <button type="submit" class="bg-blue-600 text-white p-2 rounded">Suscribirse</button>
+        </form>
+      </section>
+</Layout>
+  
