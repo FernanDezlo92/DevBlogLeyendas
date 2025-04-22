@@ -26,7 +26,7 @@ const { Content } = await render(book)
   <div class="flex gap-12">
     <aside class="flex flex-col items-center gap-4">
       <a href='/books' class="hover:underline opacity-70">← Volver atrás</a>
-      <img transition:name={`img-${slug}`} class="rounded w-72 h-auto" src={`/fotosLibros/${img}`} alt={title} />
+      <img transition:name={`img-${slug}`} class="rounded w-72 h-auto" src={`/fotosLibros/${img}`} alt={title} loading="lazy" />
       {
         SHOW_BUY_BUTTON && (
           <a

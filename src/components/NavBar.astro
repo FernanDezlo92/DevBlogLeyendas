@@ -26,7 +26,7 @@ const navLinks = [
 <nav class="min-h-10 pt-4 pb-12 relative sm:min-h-14 sm:pb-24 md:pt-8">
     {
         navLinks.length > 0 && (
-            <div class="flex md:justify-center w-full max-w-3xl mx-auto relative">
+            <div class="flex md:justify-center w-full max-w-3xl mx-auto relative pr-12 min-w-[300px]">
                 <button
                     class="menu-toggle w-8 h-8 -ml-1 flex items-center justify-center relative z-30 md:hidden"
                     aria-label="Open Menu"
@@ -46,23 +46,6 @@ const navLinks = [
                             </NavLink>
                         </li>
                     ))}
-                    <div class="flex gap-4 items-center justify-center">
-                        <li class="py-1">
-                            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                                <Icon name="youtube" class="w-6 h-6" />
-                            </a>
-                        </li>
-                        <li class="py-1">
-                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                                <Icon name="facebook" class="w-6 h-6" />
-                            </a>
-                        </li>
-                        <li class="py-1">
-                            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                                <Icon name="twitter" class="w-6 h-6" />
-                            </a>
-                        </li>
-                    </div>
                 </ul>
             </div>
         )
